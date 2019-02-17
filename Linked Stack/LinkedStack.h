@@ -87,6 +87,17 @@ public:
 		else
 			return topPtr->info;
 	}
+
+	~LinkedStack()
+	{
+		NodeType* temp;
+		while (topPtr != NULL)
+		{
+			temp = topPtr;
+			topPtr = topPtr->next;
+			delete temp;
+		}
+	}
 };
 
 
