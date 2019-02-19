@@ -1,7 +1,9 @@
 #ifndef LINKEDQUEUE_H
 #define LINKEDQUEUE_H
 
-#include<iostream>
+#include<new> // For std::bad_alloc
+#include<cstddef> // For NULL
+
 using namespace std;
 
 typedef char ItemType;
@@ -22,7 +24,11 @@ private:
 	NodeType* rear;
 
 public:
-	LinkedQueue(){}
+	LinkedQueue()
+	{
+		front = NULL;
+		rear = NULL;
+	}
 
 	bool isEmpty() const
 	{
@@ -49,9 +55,48 @@ public:
 
 	void makeEmpty() {}
 
-	void enqueue(){}
+	void enqueue(ItemType item)
+	{
+		if (isFull())
+			throw FullQueue();
+		else
+		{
 
-	void dequeue(){}
+			NodeType* location;
+			location = new NodeType;
+
+			location->info = item;
+			location->next = NULL; // New node alwyes is the last node.
+
+			if (rear == NULL)
+			{
+				front = location;
+			}
+			else
+			{
+				rear->next = location;
+			}
+			rear = location;
+		}
+	}
+
+	ItemType dequeue()
+	{
+		if (isEmpty())
+			throw EmptyQueue();
+		else
+		{
+			NodeType* temp = front;
+			ItemType item = front->info;
+			front = front->next;
+
+			// We reach the end and if we delete the rear will be pointing to nothing so we put it to NULL.
+			if (front == NULL) 
+				rear = NULL;
+			delete temp;
+			return item;
+		}
+	}
 
 	~LinkedQueue(){}
 };
