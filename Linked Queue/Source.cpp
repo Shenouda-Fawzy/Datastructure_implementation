@@ -13,6 +13,9 @@ int main()
 	lQueue.enqueue('C');
 	lQueue.enqueue('D');
 
+	cout << "is Empty: " << lQueue.isEmpty()<< endl;
+
+
 	char ch = lQueue.dequeue();
 	cout << ch << endl;
 

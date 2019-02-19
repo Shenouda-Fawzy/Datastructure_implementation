@@ -53,7 +53,18 @@ public:
 		}
 	}
 
-	void makeEmpty() {}
+	void makeEmpty() 
+	{
+		NodeType* temp;
+		while (front != NULL)
+		{
+			temp = front;
+			front = front->next;
+			delete temp;
+		}
+		// We reach the end and if we delete the rear will be pointing to nothing so we put it to NULL.
+		rear = NULL;
+	}
 
 	void enqueue(ItemType item)
 	{
@@ -98,6 +109,9 @@ public:
 		}
 	}
 
-	~LinkedQueue(){}
+	~LinkedQueue()
+	{
+		makeEmpty();
+	}
 };
 #endif
