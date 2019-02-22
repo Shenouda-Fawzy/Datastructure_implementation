@@ -26,7 +26,7 @@ public:
 	{
 		listData = NULL;
 		currentPos = NULL;
-		length = 0;
+		length = -1;
 	}
 
 	void makeEmpty(){}
@@ -67,19 +67,20 @@ public:
 
 	void deleteItem(ItemType item){}
 
+// Reset used to traverse throgh the list from the begining.
 	void resetList()
 	{
-		NodeType* temp;
-		while (listData != NULL)
-		{
-			temp = listData;
-			listData = listData->next;
-			delete temp;
-		}
-		length = 0;
+		currentPos = NULL;
 	}
 
-	void getNextItem(ItemType& item ){}
+	void getNextItem(ItemType& item )
+	{
+		if (currentPos == NULL)
+			currentPos = listData;
+		else
+			currentPos = currentPos->next;
+		item = currentPos->info;
+	}
 
 	~UnSortedLinkedList()
 	{
