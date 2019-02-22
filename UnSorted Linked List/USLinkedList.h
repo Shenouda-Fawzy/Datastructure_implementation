@@ -94,7 +94,29 @@ public:
 		length++;
 	}
 
-	void deleteItem(ItemType item){}
+	void deleteItem(ItemType item)
+	{
+		NodeType* location;
+		NodeType* tmpLocation;
+
+// if the item to be deleted is the first item in the list.
+		if (item == listData->info)
+		{
+			tmpLocation = listData;
+			listData = listData->next;
+		}
+		else
+		{
+			location = listData;
+			while (item != (location->next)->info)
+				location = location->next;
+
+			tmpLocation = location->next;
+			location->next = (location->next)->next;
+		}
+		delete tmpLocation;
+		length--;
+	}
 
 // Reset used to traverse throgh the list from the begining.
 	void resetList()
