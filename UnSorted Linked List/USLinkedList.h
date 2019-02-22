@@ -67,11 +67,24 @@ public:
 
 	void deleteItem(ItemType item){}
 
-	void resetList(){}
+	void resetList()
+	{
+		NodeType* temp;
+		while (listData != NULL)
+		{
+			temp = listData;
+			listData = listData->next;
+			delete temp;
+		}
+		length = 0;
+	}
 
 	void getNextItem(ItemType& item ){}
 
-	~UnSortedLinkedList(){}
+	~UnSortedLinkedList()
+	{
+		resetList();
+	}
 };
 
 #endif
