@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Linked Stack", "Linked Stac
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Linked Queue", "Linked Queue\Linked Queue.vcxproj", "{47764074-E12A-4139-95BC-C5E661B17A96}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnSorted Linked List", "UnSorted Linked List\UnSorted Linked List.vcxproj", "{E89993C2-134F-4123-976C-87FA5042DC46}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,10 @@ Global
 		{47764074-E12A-4139-95BC-C5E661B17A96}.Debug|Win32.Build.0 = Debug|Win32
 		{47764074-E12A-4139-95BC-C5E661B17A96}.Release|Win32.ActiveCfg = Release|Win32
 		{47764074-E12A-4139-95BC-C5E661B17A96}.Release|Win32.Build.0 = Release|Win32
+		{E89993C2-134F-4123-976C-87FA5042DC46}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E89993C2-134F-4123-976C-87FA5042DC46}.Debug|Win32.Build.0 = Debug|Win32
+		{E89993C2-134F-4123-976C-87FA5042DC46}.Release|Win32.ActiveCfg = Release|Win32
+		{E89993C2-134F-4123-976C-87FA5042DC46}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
