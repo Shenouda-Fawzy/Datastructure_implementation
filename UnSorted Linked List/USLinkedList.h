@@ -26,7 +26,7 @@ public:
 	{
 		listData = NULL;
 		currentPos = NULL;
-		length = -1;
+		length = 0;
 	}
 
 	void makeEmpty()
@@ -38,7 +38,7 @@ public:
 			listData = listData->next;
 			delete temp;
 		}
-		length = -1;
+		length = 0;
 	}
 
 	bool isFull()const
@@ -87,7 +87,7 @@ public:
 	{
 		if (isFull())
 			throw FullList();
-		NodeType* location;
+		NodeType* location = new NodeType;
 		location->info = item;
 		location->next = listData;
 		listData = location;
@@ -96,18 +96,17 @@ public:
 
 	void deleteItem(ItemType item)
 	{
-		NodeType* location;
+		NodeType* location = listData;
 		NodeType* tmpLocation;
 
 // if the item to be deleted is the first item in the list.
 		if (item == listData->info)
 		{
-			tmpLocation = listData;
+			tmpLocation = location;
 			listData = listData->next;
 		}
 		else
 		{
-			location = listData;
 			while (item != (location->next)->info)
 				location = location->next;
 
