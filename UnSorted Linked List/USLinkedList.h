@@ -5,8 +5,8 @@
 #include<new>
 typedef char ItemType;
 
-class FullStack{};
-class EmptyStack{};
+class FullList{};
+class EmptyList{};
 
 struct NodeType
 {
@@ -54,7 +54,16 @@ public:
 
 	void retrieveItem(ItemType& item, bool& found){}
 
-	void putItem(ItemType item){}
+	void putItem(ItemType item)
+	{
+		if (isFull())
+			throw FullList();
+		NodeType* location;
+		location->info = item;
+		location->next = listData;
+		listData = location;
+		length++;
+	}
 
 	void deleteItem(ItemType item){}
 
