@@ -2,6 +2,7 @@
 #define USLINKEDLIST_H
 
 #include<cstddef>
+#include<new>
 typedef char ItemType;
 
 class FullStack{};
@@ -21,13 +22,35 @@ private:
 	NodeType* currentPos;
 
 public:
-	UnSortedLinkedList(){}
+	UnSortedLinkedList()
+	{
+		listData = NULL;
+		currentPos = NULL;
+		length = 0;
+	}
 
 	void makeEmpty(){}
 
-	bool isFull()const{}
+	bool isFull()const
+	{
+		// Trying to allocate new space (Node).
+		NodeType* location;
+		try
+		{
+			location = new NodeType;
+			delete location;
+			return false;
+		}
+		catch (std::bad_alloc Exception)
+		{
+			return true;
+		}
+	}
 
-	int lengthIs() const{}
+	int lengthIs() const
+	{
+		return length;
+	}
 
 	void retrieveItem(ItemType& item, bool& found){}
 
