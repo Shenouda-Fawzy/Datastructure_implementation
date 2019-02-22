@@ -29,7 +29,17 @@ public:
 		length = -1;
 	}
 
-	void makeEmpty(){}
+	void makeEmpty()
+	{
+		NodeType* temp;
+		while (listData != NULL)
+		{
+			temp = listData;
+			listData = listData->next;
+			delete temp;
+		}
+		length = -1;
+	}
 
 	bool isFull()const
 	{
@@ -52,7 +62,26 @@ public:
 		return length;
 	}
 
-	void retrieveItem(ItemType& item, bool& found){}
+	void retrieveItem(ItemType& item, bool& found)
+	{
+		NodeType* location;
+		location = listData;
+		bool moreToSearch = (location != NULL);
+
+		while (moreToSearch && !found)
+		{
+			if (item == location->info)
+			{
+				item = location->info;
+				found = true;
+			}
+			else
+			{
+				location = location->next;
+				moreToSearch = (location != NULL);
+			}
+		}
+	}
 
 	void putItem(ItemType item)
 	{
@@ -84,7 +113,7 @@ public:
 
 	~UnSortedLinkedList()
 	{
-		resetList();
+		makeEmpty();
 	}
 };
 
