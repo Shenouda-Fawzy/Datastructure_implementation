@@ -1,5 +1,5 @@
-#ifndef USLINKEDLIST_H
-#define USLINKEDLIST_H
+#ifndef SORTEDLINKEDLIST_H
+#define SORTEDLINKEDLIST_H
 
 #include<cstddef>
 #include<new>
@@ -14,7 +14,7 @@ struct NodeType
 	NodeType* next;
 };
 
-class UnSortedLinkedList
+class SortedLinkedList
 {
 private:
 	int length;
@@ -22,7 +22,7 @@ private:
 	NodeType* currentPos;
 
 public:
-	UnSortedLinkedList()
+	SortedLinkedList()
 	{
 		listData = NULL;
 		currentPos = NULL;
@@ -83,14 +83,48 @@ public:
 		}
 	}
 
-	void putItem(ItemType item)
+	void insertItem(ItemType item)
 	{
 		if (isFull())
 			throw FullList();
-		NodeType* location = new NodeType;
-		location->info = item;
-		location->next = listData;
-		listData = location;
+
+		NodeType* newNode;
+		NodeType* location;
+		NodeType* predLoc;
+
+		bool moreToSearch = false;
+
+		location = listData;
+		predLoc = NULL;
+		moreToSearch = (location != NULL); // if doesn't reach the end.
+
+// Finding insertion point.
+		while (moreToSearch)
+		{
+			if (location->info < item)
+			{
+				predLoc = location;
+				location = location->next;
+				moreToSearch = (location != NULL);
+			}
+			else
+				moreToSearch = false;
+		}
+
+		// Prepare Node for insertion.
+		newNode = new NodeType;
+		newNode->info = item;
+
+		if (predLoc == NULL)
+		{
+			newNode->next = listData;
+			listData = newNode;
+		}
+		else
+		{
+			newNode->next = location;
+			predLoc->next = newNode;
+		}
 		length++;
 	}
 
@@ -132,7 +166,7 @@ public:
 		item = currentPos->info;
 	}
 
-	~UnSortedLinkedList()
+	~SortedLinkedList()
 	{
 		makeEmpty();
 	}
