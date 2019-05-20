@@ -1,6 +1,7 @@
 #include<iostream>
 #include "SortedList.h"
 #include "USList.h"
+#include "House.h"
 
 using namespace std;
 //void testUnsortedList(); // Method declaration.
@@ -17,8 +18,9 @@ void testUnsortedList()
 {
 	Ulist list;
 	House h1, h2, h3, h4, h5;
-	ofstream out("output.txt", ios::trunc);
-	ifstream inFile("input.txt");
+	ofstream out("output.txt", ios::trunc); // for out to this file.
+	ifstream inFile("input.txt",ios::app); // For readeing
+	
 	h1.read(inFile);
 	h2.read(inFile);
 	h3.read(inFile);
@@ -74,7 +76,7 @@ void testSortedList()
 	SortedList list;
 	House h1, h2, h3, h4, h5;
 	House h6 = House("Hassan", 4);
-	ofstream out("output.txt", ios::trunc);
+	ofstream out("output.txt");
 	ifstream inFile("input.txt"); // read from input.txt
 	h1.read(inFile); // 5
 	h2.read(inFile); // 7
