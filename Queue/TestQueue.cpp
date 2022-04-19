@@ -4,6 +4,7 @@
 using namespace std;
 int main()
 {
+	cout << "Queue started" << endl;
 	QueueType queue = QueueType(5);
 	cout << queue.isFull() << endl;
 	cout << queue.isEmpty() << endl;
