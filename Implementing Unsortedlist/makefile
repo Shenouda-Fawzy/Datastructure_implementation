@@ -4,13 +4,10 @@ all: List.out
 List.out: List.o
 	 g++ -o List.out Source.o
 
-List.o: USList.h SortedList.h
+List.o: USList.h SortedList.h  # we can remove the *.h files without affecting the build process
 	 g++ -c Source.cpp
      
 clean:
-	 rm Source.o Source.out
+	 rm Source.o List.out
 
-# build:
-#     g++ -o Source.out Source.cpp
-  
 
