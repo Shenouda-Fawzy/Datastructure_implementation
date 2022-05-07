@@ -87,7 +87,7 @@ public:
 	{
 		if (isFull())
 			throw FullList();
-		NodeType* location;
+		NodeType* location = new NodeType;
 		location->info = item;
 		location->next = listData;
 		listData = location;
