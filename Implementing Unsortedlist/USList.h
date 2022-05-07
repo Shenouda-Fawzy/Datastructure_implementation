@@ -1,12 +1,12 @@
 #ifndef USLIST_H
 #define USLIST_H
 #include "House.h"
-const int MAXITEM = 100;
+const int LIST_MAXITEM = 100;
 
 class Ulist
 {
 private:
-	House info[MAXITEM]; // info
+	House info[LIST_MAXITEM]; // info
 	int length;
 	int currentItem;
 
@@ -24,7 +24,7 @@ public:
 
 	bool isFull() const
 	{
-		return length == MAXITEM;
+		return length == LIST_MAXITEM;
 	}
 
 	int lengthIs() const
@@ -53,7 +53,7 @@ public:
 
 	void putItem(House h)
 	{
-		if (length < MAXITEM)
+		if (length < LIST_MAXITEM)
 			info[length] = h; // Put the item in the current location.
 		length++;
 	}
@@ -85,7 +85,7 @@ public:
 	void getNextItem(House& h)
 	{
 		currentItem++;
-		if (currentItem < MAXITEM)
+		if (currentItem < LIST_MAXITEM)
 			h = info[currentItem];
 	}
 };
