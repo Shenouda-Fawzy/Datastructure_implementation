@@ -83,6 +83,14 @@ public:
 		}
 	}
 
+/*
+    Insert item uses two pointers with one heading the other, we call the previous one
+    is the predLoc. In case the new item is greater than the current item pointed by
+    the 'location' then we will move the two pointers. If less, the we create a new node
+    and make the predLoc point to the new one, then the new one make to point
+    to the current 'location'.
+    For more info, read CH.5 insertItem()
+*/
 	void insertItem(ItemType item)
 	{
 		if (isFull())
@@ -96,6 +104,7 @@ public:
 
 		location = listData;
 		predLoc = NULL;
+
 		moreToSearch = (location != NULL); // if doesn't reach the end.
 
 // Finding insertion point.
@@ -108,13 +117,17 @@ public:
 				moreToSearch = (location != NULL);
 			}
 			else
+            { // Insertion point found
 				moreToSearch = false;
+            }
 		}
 
 		// Prepare Node for insertion.
 		newNode = new NodeType;
 		newNode->info = item;
 
+        // Handle the case of the item will be the first item, then it will point
+        // to the rest of the list
 		if (predLoc == NULL)
 		{
 			newNode->next = listData;
